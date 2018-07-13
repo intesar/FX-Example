@@ -23,7 +23,7 @@ environments:
       - name: Default
         authType: BASIC
         username: admin@fxlabs.local
-        password: '{{@Vault.Nisum/password}}'
+        password: '{{@Vault.FXLabs/password}}'
 
 # Job profiles
 jobs:
@@ -31,17 +31,17 @@ jobs:
     environment: Dev
     tags:
       - V1
-    regions: FXLabs/US_WEST_1
+    regions: FXLabs/Localhost
     cron: '0 0 12 * * ?'
     issueTracker: 
-      name: Nisum/Dev-IssueTracker
-      url: https://github.com/amjadafanah/FX-Example-2
+      name: FX-Example-IssueTracker
+      url: https://github.com/intesar/FX-Example
       account: Default_GitHub
     notifications: 
-      - name: Nisum/Dev-Slack-Notification
+      - name: FX-Example-Slack-Notification
         channel: engineering
         account: Default_Slack
-      - name: Nisum/Dev-Email-Notification
+      - name: FX-Example-Email-Notification
         # enter your email
-        to: amjad@fxlabs.io
+        to: intesar@fxlabs.io
         account: Default_Email
