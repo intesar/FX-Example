@@ -1,0 +1,47 @@
+---
+version: '1'
+
+# App (Project) name
+name: FX-Example-2
+
+# App description
+description: Testing the FX SaaS Platform
+
+# license
+licenses:
+  - APACHE LICENSE, VERSION 2.
+
+imports:
+  '@USName': FXLabs/Common/US-Names
+
+# App environments
+environments:
+  - name: Dev
+    baseUrl: http://13.57.51.56/api/v1
+    # app access credentials
+    auths:
+      - name: Default
+        authType: BASIC
+        username: admin@fxlabs.local
+        password: '{{@Vault.Nisum/password}}'
+
+# Job profiles
+jobs:
+  - name: Dev
+    environment: Dev
+    tags:
+      - V1
+    regions: FXLabs/US_WEST_1
+    cron: '0 0 12 * * ?'
+    issueTracker: 
+      name: Nisum/Dev-IssueTracker
+      url: https://github.com/amjadafanah/FX-Example-2
+      account: Default_GitHub
+    notifications: 
+      - name: Nisum/Dev-Slack-Notification
+        channel: engineering
+        account: Default_Slack
+      - name: Nisum/Dev-Email-Notification
+        # enter your email
+        to: amjad@fxlabs.io
+        account: Default_Email

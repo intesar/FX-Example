@@ -1,0 +1,100 @@
+#Auto Code Configuration
+
+databases:
+  - name: MySQL
+    version: 5.0
+    description: test
+    inactive: false
+  
+  - name: Oracle
+    version: 5.0
+    description: test
+    inactive: true
+  
+  - name: Postgres
+    version: 5.0
+    description: test
+    inactive: true
+  
+  - name: SQLServer
+    version: 5.0
+    description: test
+    inactive: true
+    
+logForgingPatterns:
+  - "INFO:(a-z|A-Z|0-9|.|!|@|#|$|%|&)+"
+  - "DEBUG:(a-z|A-Z|0-9|.|!|@|#|$|%|&)+"
+  - "ERROR:"
+  
+testSuites:
+  - category: UnSecured
+    scenario: anonymous_invalid
+    severity: Major
+    assertions:
+      - "@StatusCode != 200"
+      
+  - category: UnSecured
+    scenario: auth_invalid
+    severity: Major
+    assertions:
+      - "@StatusCode != 200"
+      
+  - category: DDOS
+    scenario: DDOS
+    severity: Major
+    assertions:
+      - "@StatusCode != 200"
+      
+  - category: XSS_Injection
+    scenario: XSS_Injection
+    severity: Major
+    assertions:
+      - "@StatusCode != 200"
+      
+  - category: SQL_Injection
+    scenario: sql_injection
+    severity: Major
+    assertions:
+      - "@StatusCode != 200"
+
+  - category: Log_Forging
+    scenario: log_forging
+    severity: Major
+    assertions:
+      - "@StatusCode != 200"
+
+  - category: Negative
+    scenario: invalid_datatype
+    severity: Minor
+    assertions:
+      - "@StatusCode != 200"
+
+  - category: special_chars
+    scenario: special_chars
+    severity: Minor
+    assertions:
+      - "@StatusCode != 200"
+
+  - category: Negative
+    scenario: negative
+    severity: Minor
+    assertions:
+      - "@StatusCode != 200"
+      
+  - category: Negative
+    scenario: null_value
+    severity: Minor
+    assertions:
+      - "@StatusCode != 200"
+
+  - category: Negative
+    scenario: empty_value
+    severity: Minor
+    assertions:
+      - "@StatusCode != 200"
+
+  - category: Functional
+    scenario: create
+    severity: Minor
+    assertions:
+      - "@StatusCode == 200"
